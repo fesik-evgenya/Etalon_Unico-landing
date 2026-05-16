@@ -140,13 +140,12 @@ body {
 .header {
     background-color: var(--color-dark);
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     padding: 10px 0;
     gap: 10px;
-    min-width: 100vh;
-
+    min-width: 100%;
+    margin: 0 auto;
 }
 
 .header__inner {
@@ -155,6 +154,7 @@ body {
     align-items: center;
     flex-direction: row;
     padding: 0 40px;
+    width: 1150px;
 }
 
 .logo {
@@ -239,7 +239,17 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 10px;
-    padding: 6rem 1rem;
+    padding: 80px 0 40px;
+
+
+}
+
+.hero__container {
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .hero__title {
@@ -252,33 +262,15 @@ body {
 }
 
 .hero__subtitle {
+    font-family: var(--font-body), system-ui, sans-serif;
     font-size: 24px;
     font-weight: 500;
     line-height: 29px;
     text-align: center;
     color: var(--color-gold);
-    text-transform: uppercase;
     letter-spacing: 0.05em;
-}
+    opacity: 0.8;
 
-/* ===== МОБИЛЬНО-ПЛАНШЕТНЫЙ ЗАГОЛОВОК ===== */
-.section-header {
-    text-align: center;
-    padding: 2rem 1rem 0;
-}
-
-.section-header__title {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--color-gold);
-    margin-bottom: 0.25rem;
-}
-
-.section-header__style {
-    font-weight: 600;
-    color: var(--color-gold);
-    text-transform: uppercase;
-    font-size: 0.9rem;
 }
 
 /* ===== КАРТОЧКИ (ДЕСКТОП) ===== */
@@ -437,6 +429,7 @@ body {
     background: var(--color-white);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
     border-radius: 12px;
+    position: relative;
 }
 
 .step__act {
@@ -456,6 +449,17 @@ body {
     color: var(--color-gold);
     opacity: 0.5;
 
+}
+
+.step__arrow {
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 59px;
+    color: var(--color-gold);
+    opacity: 0.5;
+    position: absolute;
+    top: 50px;
+    right: 10px;
 }
 
 .step__title {
@@ -491,20 +495,21 @@ body {
     max-width: 1150px;
     width: 100%;
     margin: 0 auto;
-
 }
 
 .logos__line {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
-    padding: 30px 0;
-    gap: 40px;
+    gap: 60px;
     background: var(--color-white);
     flex-wrap: nowrap;
     overflow-x: hidden;
     width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-sizing: border-box;
 }
 
 .logos__line img {
@@ -598,6 +603,20 @@ body {
     height: 140px;
 }
 
+.about__awards {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+    gap: 30px;
+    background: var(--color-white);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    border-radius: 12px;
+    color: var(--color-text);
+    font-family: var(--font-body), system-ui, sans-serif;
+    width: 900px;
+}
+
 .about__grid-card-title {
     font-weight: 500;
     font-size: 24px;
@@ -631,11 +650,12 @@ body {
 
 .about__mission-title {
     font-family: var(--font-body), system-ui, sans-serif;
-    font-weight: 600;
-    font-size: 24px;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 20px;
     line-height: 29px;
-    text-align: center;
-    color: var(--color-gold);
+    text-align: right;
+    color: var(--color-text);
 }
 
 .about__mission-content {
@@ -749,7 +769,7 @@ body {
 .footer__legal-dev:visited,
 .footer__legal-dev:hover,
 .footer__legal-dev:active {
-    font-family:var(--font-body), system-ui, sans-serif;
+    font-family: var(--font-body), system-ui, sans-serif;
     font-weight: 400;
     font-size: 10px;
     line-height: 15px;
@@ -760,34 +780,70 @@ body {
 
 /* ===== СТРАНИЦЫ ПОЛИТИКИ / СОГЛАШЕНИЯ ===== */
 .legal-page {
-    padding: 3rem 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 10px 40px;
+    gap: 16px;
+    width: 700px;
+    margin: 0 auto;
 }
 
 .legal-page h1 {
-    font-size: 2rem;
-    color: var(--color-gold);
-    margin-bottom: 0.5rem;
     text-align: center;
+    font-family: var(--font-body), system-ui, sans-serif;
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 44px;
+    color: var(--color-dark);
+}
+
+.divider {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 5px;
+    width: 580px;
+}
+
+.legal__content {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .legal-date {
-    text-align: center;
-    color: var(--color-light);
-    margin-bottom: 2rem;
-    font-style: italic;
+    font-family: var(--font-body), system-ui, sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: var(--color-gold);
+
 }
 
 .legal-page h2 {
-    font-size: 1.35rem;
-    color: var(--color-gold);
-    margin: 1.75rem 0 0.75rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    width: 700px;
+    color: var(--color-text);
+    font-family: var(--font-body), system-ui, sans-serif;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
 }
 
 .legal-page p,
 .legal-page li {
-    color: var(--color-light);
-    line-height: 1.7;
-    margin-bottom: 0.75rem;
+    font-family: var(--font-body), system-ui, sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: justify;
+    color: var(--color-text);
 }
 
 .legal-page ul {
@@ -796,49 +852,417 @@ body {
     margin-bottom: 1rem;
 }
 
-.footer__back {
-    color: var(--color-gold);
-    text-decoration: underline;
+.legal__block {
+    border-left: 1px solid var(--color-gold);
+    padding: 8px 0 8px 12px;
 }
+
+.confirm {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 40px;
+    gap: 50px;
+    width: 700px;
+    background: var(--color-white);
+    border: 1px solid var(--color-gold);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    border-radius: 12px;
+}
+
+.confirm__message {
+    font-family: var(--font-body), system-ui, sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    color: var(--color-text);
+}
+
+.confirm__accept {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    gap: 10px;
+}
+
+.btn__accept {
+    text-transform: lowercase;
+    font-family: var(--font-body), system-ui, sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 20px;
+    width: fit-content;
+}
+
+.privacy-questions {
+    font-family: var(--font-body), system-ui, sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    color: #2C2C2C;
+}
+
+.privacy-questions:hover {
+    color: var(--color-gold);
+}
+
 
 /* ============================================
    ПЛАНШЕТ (max-width: 1024px)
    ============================================ */
 @media (max-width: 1024px) {
+    /* ----- Контейнер ----- */
     .container {
-        padding: 0 2rem;   /* дубль, можно оставить */
+        max-width: 728px;
+        width: 100%;
+        padding: 0 20px;
+        margin: 0 auto;
+        box-sizing: border-box;
     }
 
-    .cards-grid {
-
+    /* ----- Общие секции ----- */
+    .section {
+        padding: 56px 0;
+        margin: 0;
     }
 
+    /* ----- Шапка (header) ----- */
+    .header {
+        padding: 10px 0;
+    }
+
+    .header__inner {
+        width: 650px;
+        padding: 20px;
+        gap: 16px;
+        margin: 0 auto;
+    }
+
+    .logo {
+        width: 52px;
+        height: 40px;
+    }
+
+    .header__slogan_frsLine {
+        font-size: 20px;
+        line-height: 24px;
+        text-transform: uppercase;
+    }
+
+    .header__slogan_secLine {
+        font-size: 14px;
+        line-height: 17px;
+        text-transform: lowercase;
+    }
+
+    .btn {
+        width: 120px;
+        height: 40px;
+        padding: 8px 16px;
+        font-size: 14px;
+        line-height: 17px;
+    }
+
+    /* ----- Hero ----- */
     .hero {
-        padding: 4rem 1rem;
+        padding: 40px 0 20px;
+        gap: 10px;
     }
 
     .hero__title {
-        font-size: 36px;   /* из @media min-width:768px */
+        font-size: 28px;
+        line-height: 34px;
+    }
+
+    .hero__subtitle {
+        font-size: 20px;
+        line-height: 24px;
+        opacity: 0.8;
+    }
+
+    /* ----- Карточки событий ----- */
+    .card {
+        padding: 60px 0;
+        gap: 20px;
+    }
+
+    .card__title {
+        font-size: 24px;
+        line-height: 29px;
+    }
+
+    .card__slider {
+        padding: 20px;
+    }
+
+    .card__slider-img {
+        width: 728px;
+        height: 320px;
+        object-fit: cover;
+    }
+
+    .tui-pager {
+        gap: 8px;
+    }
+
+    .badge {
+        left: 30px;
+        top: 30px;
+        padding: 8px 12px;
+        font-size: 10px;
+        line-height: 12px;
+        border-radius: 16px;
+        opacity: 0.7;
+    }
+
+    .badge span {
+        font-size: 10px;
+        line-height: 12px;
+    }
+
+    .card__grid {
+        padding: 0 20px;
+        gap: 15px;
+    }
+
+    .card__content {
+        padding: 16px 0 16px 12px;
+        gap: 6px;
+    }
+
+    .card__subtitle {
+        font-size: 18px;
+        line-height: 22px;
+    }
+
+    /* Для карточки "Атмосфера вашего события" и "Возможности" subtitle может быть 20px */
+    .card:nth-child(3) .card__subtitle,
+    .card:nth-child(4) .card__subtitle {
+        font-size: 20px;
+        line-height: 24px;
+    }
+
+    .card__desc {
+        font-size: 14px;
+        line-height: 17px;
+    }
+
+    /* ----- Шаги работы ----- */
+    .steps {
+        padding: 60px 0;
+        gap: 40px;
     }
 
     .section__title {
-        font-size: 2rem;
-    }
-
-    /* Показываем мобильно-планшетный заголовок */
-    .mobile-tablet-only {
-        display: block;
-    }
-
-    .mobile-only-extra,
-    .mobile-only {
-        display: none;
+        font-size: 28px;
+        line-height: 34px;
     }
 
     .steps__list {
+        gap: 20px;
+    }
+
+    .step {
+        width: 220px;
+        height: 300px;
+        padding: 20px;
+        gap: 15px;
+
+    }
+
+    .step__act {
+        width: 100%;
+        gap: 15px;
+        flex-direction: column;
+        height: 120px;
+    }
+
+    .step__number {
+        font-size: 36px;
+        line-height: 44px;
+        opacity: 0.5;
+    }
+
+    .step__arrow {
+        top: 30px;
+        right: 15px;
+    }
+
+    .step__title {
+        font-size: 16px;
+        line-height: 20px;
+        font-weight: 500;
+        height: 60px;
+    }
+
+    .step__desc {
+        font-size: 16px;
+        line-height: 20px;
+        height: 100px;
+    }
+
+    /* Третий шаг – заголовок крупнее, без стрелки */
+    .step:last-child .step__title {
+        font-size: 20px;
+        line-height: 24px;
+    }
+
+    /* ----- Партнёры (логотипы) ----- */
+    .partner {
+        padding: 60px 0;
+        gap: 40px;
+    }
+
+    .logos {
+        gap: 20px;
+    }
+
+    .logos__line {
+        gap: 40px;
+        padding: 10px 0;
+        height: 80px;
+    }
+
+    .logos__line img {
+        height: 40px;
+        width: auto;
+    }
+
+    /* ----- О компании ----- */
+    .about {
+        padding: 0 0 40px;
+        gap: 40px;
+    }
+
+    .about__main {
+        gap: 20px;
+    }
+
+    .about__logo {
+        width: 100px;
+        height: 77px;
+    }
+
+    .about__title {
+        font-size: 28px;
+        line-height: 34px;
+    }
+
+    .about__subtitle {
+        font-size: 20px;
+        line-height: 24px;
+    }
+
+    .about__grid {
+        gap: 20px;
+        justify-content: space-between;
+    }
+
+    .about__grid-left {
+        width: 340px;
+        gap: 16px;
+    }
+
+    .about__grid-card {
+        width: 340px;
+        padding: 20px;
+        gap: 20px;
+        height: auto;
+    }
+
+    .about__grid-card-title {
+        font-size: 20px;
+        line-height: 24px;
+    }
+
+    .about__grid-card-content {
+        font-size: 14px;
+        line-height: 17px;
+    }
+
+    /* Вертикальная разделительная линия (оставляем, но она повёрнута) */
+    .about__grid svg {
+        display: block;
+        width: 1px;
+        height: 300px;
+        margin: 0;
+    }
+
+    .photo__person {
+        width: 340px;
+        height: 500px;
+        object-fit: cover;
+    }
+
+    .about__mission {
+        align-items: flex-end;
+        gap: 8px;
+    }
+
+    .about__mission-title {
+        font-size: 18px;
+        line-height: 24px;
+    }
+
+    .about__mission-content {
+        font-size: 14px;
+        line-height: 21px; /* 150% */
+        text-align: right;
+    }
+
+    /* ----- Футер ----- */
+    .footer {
+        padding: 40px 80px;
+        gap: 20px;
+    }
+
+    .footer__main {
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+        width: auto;
+        max-width: none;
+    }
+
+    .footer__main-sotial {
+        gap: 12px;
+        order: 2;
+    }
+
+    .footer__main-phones {
+        align-items: center;
+        order: 1;
+    }
+
+    .footer__phone {
+        font-size: 12px;
+        line-height: 15px;
+    }
+
+    .footer__main .btn {
+        order: 0;
+    }
+
+    .footer__legal {
+        margin-right: 0;
+        max-width: 100%;
+    }
+
+    .footer__legal-links {
         flex-direction: row;
-        justify-content: center;
-        gap: 3rem;
+        gap: 24px;
+    }
+
+    .footer__legal-copy,
+    .footer__legal-link,
+    .footer__legal-dev {
+        font-size: 10px;
+        line-height: 12px;
     }
 }
 
@@ -846,37 +1270,423 @@ body {
    МОБИЛЬНЫЕ (max-width: 767px)
    ============================================ */
 @media (max-width: 767px) {
+    /* ----- Общие контейнеры ----- */
     .container {
-        padding: 0;               /* исходное мобильное значение */
+        max-width: 350px;
+        width: 100%;
+        padding: 0 20px;
+        margin: 0 auto;
+        box-sizing: border-box;
     }
 
+    /* ----- Общие секции ----- */
     .section {
-        padding: 3rem 0;
+        padding: 30px 0;
+        margin: 0;
     }
 
-    .cards-grid {
-
+    /* ----- Шапка (header) ----- */
+    .header {
+        padding: 10px 0;
+        height: 60px;
     }
 
+    .header__inner {
+        width: 350px;
+        padding: 20px 0;
+        gap: 16px;
+        margin: 0 auto;
+    }
+
+    .logo {
+        width: 39px;
+        height: 30px;
+    }
+
+    .header__slogan_frsLine {
+        font-size: 12px;
+        line-height: 15px;
+        text-transform: uppercase;
+    }
+
+    .header__slogan_secLine {
+        font-size: 8px;
+        line-height: 10px;
+        text-transform: lowercase;
+    }
+
+    .btn {
+        width: 90px;
+        height: 27px;
+        padding: 6px 12px;
+        font-size: 12px;
+        line-height: 15px;
+    }
+
+    /* ----- Hero ----- */
     .hero {
-        padding: 3rem 1rem;
+        padding: 24px 0 16px;
+        gap: 10px;
     }
 
     .hero__title {
-        font-size: 48px;          /* исходное мобильное значение */
+        font-size: 24px;
+        line-height: 30px;
+    }
+
+    .hero__subtitle {
+        font-size: 16px;
+        line-height: 20px;
+        opacity: 0.8;
+    }
+
+    /* ----- Карточки событий ----- */
+    .card {
+        padding: 30px 0;
+        gap: 12px;
+        width: 300px;
+    }
+
+    .card__title {
+        font-size: 20px;
+        line-height: 24px;
+    }
+
+    .card__slider {
+        padding: 0 20px 20px;
+    }
+
+    .card__slider-img {
+        width: 320px;
+        height: 220px;
+        object-fit: cover;
+    }
+
+    .tui-pager {
+        gap: 5px;
+    }
+
+    .tui-pager svg {
+        width: 4px;
+        height: 6px;
+    }
+
+    .tui-pager svg:nth-child(2),
+    .tui-pager svg:nth-child(3),
+    .tui-pager svg:nth-child(4),
+    .tui-pager svg:nth-child(5),
+    .tui-pager svg:nth-child(6),
+    .tui-pager svg:nth-child(7) {
+        width: 5px;
+        height: 5px;
+    }
+
+    .badge {
+        left: 10px;
+        top: 10px;
+        padding: 8px 12px;
+        font-size: 8px;
+        line-height: 10px;
+        border-radius: 16px;
+    }
+
+    .badge span {
+        font-size: 8px;
+        line-height: 10px;
+    }
+
+    .card__grid {
+        padding: 0;
+        gap: 12px;
+        width: 300px;
+        justify-content: center;
+        margin-left: 30px;
+    }
+
+    .card__content {
+        padding: 12px 0 12px 10px;
+        gap: 6px;
+    }
+
+    .card__subtitle {
+        font-size: 16px;
+        line-height: 20px;
+    }
+
+    .card__desc {
+        font-size: 12px;
+        line-height: 15px;
+    }
+
+    /* ----- Шаги работы ----- */
+    .steps {
+        padding: 30px 0;
+        gap: 12px;
     }
 
     .section__title {
-        font-size: 1.75rem;
+        font-size: 20px;
+        line-height: 24px;
     }
 
     .steps__list {
         flex-direction: column;
-        gap: 2rem;
+        align-items: center;
+        padding: 18px 0 0;
+        gap: 12px;
     }
 
-    .footer__inner {
+    .step {
+        width: 320px;
+        height: 220px;
+        padding: 20px 20px 50px;
+        justify-content: space-evenly;
+        position: relative;
+    }
+
+    .step__act {
+        width: 280px;
+        gap: 20px;
+        justify-content: space-between;
+        height: auto;
+        flex-direction: row;
+    }
+
+    .step__arrow {
+        transform: rotate(90deg);
+        top: 160px;
+        right: 140px;
+    }
+
+    .step__number:first-child {
+        font-size: 28px;
+        line-height: 34px;
+        opacity: 0.5;
+    }
+
+    .step__act .step__title {
+        font-size: 16px;
+        line-height: 22px;
+        padding: 0;
+    }
+
+    /* Третий шаг – заголовок крупнее, без стрелки */
+    .step:last-child .step__title {
+        font-size: 18px;
+        line-height: 24px;
+    }
+
+    /* Стрелка (последний span.step__number) */
+    .step__act .step__number:last-child {
+        font-size: 28px;
+        line-height: 34px;
+        opacity: 0.5;
+    }
+
+    /* Для третьего шага — нет стрелки, заголовок может быть крупнее */
+    .step:last-child .step__act {
+        justify-content: flex-start;
+    }
+
+    .step:last-child .step__act .step__title {
+        font-size: 18px;
+        line-height: 22px;
+    }
+
+    .step__desc {
+        font-size: 13px;
+        line-height: 16px;
+        height: auto;
+        color: var(--color-text);
+    }
+
+    /* ----- Партнёры (логотипы) ----- */
+    .partner {
+        padding: 30px 0;
+        gap: 30px;
+    }
+
+    .logos {
+        gap: 20px;
+    }
+
+    .logos__line {
+        gap: 30px;
+        padding: 0;
+        height: 60px;
+        width: 100%;
+    }
+
+    .logos__line img {
+        height: 20px;
+        width: auto;
+    }
+
+    /* ----- О компании ----- */
+    .about {
+        padding: 0 0 20px;
+        gap: 20px;
+    }
+
+    .about__main {
+        width: 354px;
+        padding: 0 20px;
+        gap: 20px;
+        flex-direction: row;
+    }
+
+    .about__logo {
+        width: 104px;
+        height: 80px;
+    }
+
+    .about__title {
+        font-size: 20px;
+        line-height: 24px;
+    }
+
+    .about__subtitle {
+        font-size: 16px;
+        line-height: 20px;
+        max-width: 190px;
+    }
+
+    .about__grid {
         flex-direction: column;
+        gap: 20px;
+    }
+
+    .about__grid-left {
+        width: 320px;
+        gap: 16px;
+        align-items: center;
+    }
+
+    .about__grid-card {
+        width: 320px;
+        padding: 20px;
+        gap: 20px;
+        height: auto;
+        min-height: auto;
+    }
+
+    .about__grid-card:first-child {
+        height: 127px;
+    }
+
+    .about__grid-card:nth-child(2) {
+        height: 118px;
+        justify-content: space-between;
+    }
+
+    .about__grid-card:nth-child(3),
+    .about__grid-card:nth-child(4) {
+        height: 109px;
+        justify-content: space-between;
+        gap: 28px;
+    }
+
+    .about__grid-card-title {
+        font-size: 18px;
+        line-height: 22px;
+    }
+
+    .about__grid-card-content {
+        font-size: 13px;
+        line-height: 16px;
+    }
+
+    /* Скрываем вертикальную разделительную линию */
+    .about__grid svg {
+        display: none;
+    }
+
+    .photo__person {
+        width: 250px;
+        height: 306px;
+        object-fit: cover;
+    }
+
+    .about__mission {
+        align-items: center;
         text-align: center;
+        width: 320px;
+        gap: 8px;
+    }
+
+    .about__mission-title {
+        font-size: 12px;
+        line-height: 20px;
+    }
+
+    .about__mission-content {
+        font-size: 10px;
+        line-height: 15px;
+        text-align: center;
+    }
+
+    /* ----- Футер ----- */
+    .footer {
+        padding: 40px 20px;
+        gap: 12px;
+    }
+
+    .footer__main {
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+        width: 115px;
+        margin: 0 auto;
+    }
+
+    .footer__main .btn {
+        width: 90px;
+        height: 27px;
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+
+    .footer__main-phones {
+        align-items: flex-start;
+        width: 95px;
+    }
+
+    .footer__phone {
+        font-size: 10px;
+        line-height: 12px;
+    }
+
+    .footer__main-sotial {
+        gap: 12px;
+        width: 95px;
+    }
+
+    .footer__main-sotial svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .footer__legal {
+        margin-right: 0;
+        text-align: center;
+        gap: 4px;
+    }
+
+    .footer__legal-copy {
+        font-size: 8px;
+        line-height: 10px;
+    }
+
+    .footer__legal-links {
+        flex-direction: row;
+        gap: 24px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .footer__legal-link,
+    .footer__legal-dev {
+        font-size: 8px;
+        line-height: 10px;
     }
 }
