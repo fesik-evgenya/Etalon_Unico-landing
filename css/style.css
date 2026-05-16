@@ -104,8 +104,7 @@ body {
 }
 
 .section {
-    padding: 5rem 0;
-    margin: 70px 0;
+    padding: 40px 0 10px;
 }
 
 .section__title {
@@ -252,25 +251,23 @@ body {
     align-items: center;
 }
 
-.hero__title {
+.hero__title, .hero__subtitle{
+    font-family: var(--font-body), system-ui, sans-serif;
     font-size: 44px;
     font-weight: 500;
     line-height: 59px;
-    font-style: normal;
     text-align: center;
     color: var(--color-text);
+    font-style: italic;
 }
 
 .hero__subtitle {
-    font-family: var(--font-body), system-ui, sans-serif;
-    font-size: 24px;
-    font-weight: 500;
-    line-height: 29px;
-    text-align: center;
-    color: var(--color-gold);
-    letter-spacing: 0.05em;
-    opacity: 0.8;
-
+    color: transparent;
+    background: linear-gradient(90deg, var(--color-gold), #B49531, var(--color-text));
+    background-clip: text;
+    -webkit-background-clip: text;
+    display: inline-block;
+    width: 520px;
 }
 
 /* ===== КАРТОЧКИ (ДЕСКТОП) ===== */
@@ -484,7 +481,8 @@ body {
     flex-direction: column;
     align-items: center;
     padding: 60px 0;
-    gap: 40px;
+    gap: 80px;
+    margin-bottom: 50px;
 }
 
 .logos {
@@ -569,8 +567,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0;
+    padding: 0 0 0 20px;
     gap: 40px;
+    width: 915px;
 }
 
 .about__grid-left {
@@ -636,8 +635,6 @@ body {
     border: 1px solid var(--color-gold);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
     border-radius: 16px;
-    width: 450px;
-    height: 608px;
 }
 
 .about__mission {
@@ -668,6 +665,61 @@ body {
     color: var(--color-text);
 }
 
+/* ===== БЛОК НАГРАДЫ ===== */
+.awards {
+    background-color: var(--color-light);
+}
+
+.awards__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.award-card {
+    background: var(--color-white);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.award-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.award-year {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+    color: var(--color-gold);
+    margin-bottom: 12px;
+    letter-spacing: 0.05em;
+}
+
+.award-future-icon {
+    color: var(--color-gold);
+}
+
+.award-title {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 28px;
+    color: var(--color-text);
+    margin-bottom: 12px;
+    height: 60px;
+}
+
+.award-desc {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--color-text);
+    opacity: 0.85;
+}
+
 /* ===== ФУТЕР ===== */
 .footer {
     display: flex;
@@ -675,6 +727,7 @@ body {
     align-items: center;
     padding: 40px 20px;
     gap: 12px;
+    margin-top: 20px;
     background: var(--color-dark);
 }
 
@@ -972,17 +1025,16 @@ body {
     .hero {
         padding: 40px 0 20px;
         gap: 10px;
+        margin-top: 50px;
     }
 
-    .hero__title {
+    .hero__title, .hero__subtitle {
         font-size: 28px;
         line-height: 34px;
     }
 
     .hero__subtitle {
-        font-size: 20px;
-        line-height: 24px;
-        opacity: 0.8;
+        width: 335px;
     }
 
     /* ----- Карточки событий ----- */
@@ -1116,6 +1168,7 @@ body {
     .partner {
         padding: 60px 0;
         gap: 40px;
+        margin-bottom: 50px;
     }
 
     .logos {
@@ -1160,7 +1213,9 @@ body {
 
     .about__grid {
         gap: 20px;
-        justify-content: space-between;
+        justify-content: space-evenly;
+        max-width: 768px;
+        padding: 10px;
     }
 
     .about__grid-left {
@@ -1185,7 +1240,6 @@ body {
         line-height: 17px;
     }
 
-    /* Вертикальная разделительная линия (оставляем, но она повёрнута) */
     .about__grid svg {
         display: block;
         width: 1px;
@@ -1194,9 +1248,9 @@ body {
     }
 
     .photo__person {
-        width: 340px;
+        width: 100%;
         height: 500px;
-        object-fit: cover;
+        object-fit: scale-down;
     }
 
     .about__mission {
@@ -1213,6 +1267,26 @@ body {
         font-size: 14px;
         line-height: 21px; /* 150% */
         text-align: right;
+    }
+
+    /* ----- Награды ----- */
+    .awards__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+
+    .award-card {
+        padding: 20px;
+    }
+
+    .award-title {
+        font-size: 18px;
+        line-height: 24px;
+    }
+
+    .award-desc {
+        font-size: 13px;
+        line-height: 18px;
     }
 
     /* ----- Футер ----- */
@@ -1335,9 +1409,7 @@ body {
     }
 
     .hero__subtitle {
-        font-size: 16px;
-        line-height: 20px;
-        opacity: 0.8;
+        width: 320px;
     }
 
     /* ----- Карточки событий ----- */

@@ -1,3 +1,3 @@
 # Etalon_Unico-landing
 Лендинг для агентства организации мероприятий «Эталон ЮНико». Корпоративные пикники, тимбилдинги, кейтеринг, банкеты. Адаптивная вёрстка (HTML5, CSS3, БЭМ).
-https://fesik-evgenya.github.io/Etalon_Unico-landing/
+https://fesik-evgenya.github.io/Etalon_Unico-landing/ 
