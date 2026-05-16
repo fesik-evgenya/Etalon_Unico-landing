@@ -235,6 +235,7 @@ body {
 /* ===== HERO (ДЕСКТОП) ===== */
 .hero {
     display: flex;
+    justify-content: center;
     flex-direction: column;
     align-items: center;
     gap: 10px;
@@ -251,7 +252,7 @@ body {
     align-items: center;
 }
 
-.hero__title, .hero__subtitle{
+.hero__title, .hero__subtitle {
     font-family: var(--font-body), system-ui, sans-serif;
     font-size: 44px;
     font-weight: 500;
@@ -301,6 +302,7 @@ body {
     height: 400px;
     background: #2C2C2C;
     opacity: 0.4;
+    border-radius: 12px;
 }
 
 .tui-pager {
@@ -325,7 +327,7 @@ body {
     top: 25px;
     border: 1px solid rgba(255, 255, 255, 0.3);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    border-radius: 16px;
+    border-radius: 6px;
     color: var(--color-text);
     opacity: 0.7;
     font-weight: 600;
@@ -450,7 +452,7 @@ body {
 
 .step__arrow {
     font-weight: 700;
-    font-size: 48px;
+    font-size: 36px;
     line-height: 59px;
     color: var(--color-gold);
     opacity: 0.5;
@@ -634,7 +636,7 @@ body {
     background: #D9D9D9;
     border: 1px solid var(--color-gold);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-    border-radius: 16px;
+    border-radius: 12px;
 }
 
 .about__mission {
@@ -1068,7 +1070,6 @@ body {
         padding: 8px 12px;
         font-size: 10px;
         line-height: 12px;
-        border-radius: 16px;
         opacity: 0.7;
     }
 
@@ -1460,7 +1461,6 @@ body {
         padding: 8px 12px;
         font-size: 8px;
         line-height: 10px;
-        border-radius: 16px;
     }
 
     .badge span {
@@ -1823,13 +1823,13 @@ body {
         padding: 20px 0 16px;
     }
 
-    .hero__title,  .hero__subtitle {
+    .hero__title, .hero__subtitle {
         font-size: 22px;
         line-height: 28px;
+        width: 350px;
     }
 
     .hero__subtitle {
-        width: 300px;
         background: linear-gradient(90deg, var(--color-gold), #B49531, var(--color-text));
         background-clip: text;
         -webkit-background-clip: text;
@@ -1842,10 +1842,14 @@ body {
     }
 
     .card__title {
-        font-size: 20px;
+        font-size: 18px;
         line-height: 26px;
         padding: 0 8px;
-        width: 300px;
+        width: 280px;
+    }
+
+    .barbecue {
+        width: 250px;
     }
 
     .cards__grid {
@@ -1887,7 +1891,7 @@ body {
     }
 
     .card__subtitle {
-        font-size: 18px;
+        font-size: 16px;
         line-height: 24px;
     }
 
@@ -1907,7 +1911,7 @@ body {
     }
 
     .step {
-        height: 200px;
+        height: 180px;
         width: 350px;
         padding: 16px 20px 20px;
         gap: 12px;
@@ -1932,10 +1936,15 @@ body {
     }
 
     .step__arrow {
-        left: 0;
-        bottom: 0;
+        left: 15px;
+        top: 60px;
         transform: rotate(90deg);
-        font-size: 24px;
+        font-size: 20px;
+        width: 40px;
+    }
+
+    .step__title:last-child {
+        padding: 5px;
     }
 
     .step:last-child .step__arrow {
@@ -1951,7 +1960,7 @@ body {
 
     /* ----- Партнёры (логотипы) ----- */
     .partner {
-        padding: 24px 0;
+        padding: 40px 0;
         gap: 24px;
     }
 
@@ -1977,7 +1986,7 @@ body {
 
     .about__main {
         width: 100%;
-        padding: 0 16px;
+        padding: 20px 16px;
         gap: 12px;
         flex-direction: column;
         text-align: center;
@@ -1996,7 +2005,7 @@ body {
     .about__subtitle {
         font-size: 16px;
         line-height: 22px;
-        max-width: 100%;
+        max-width: 300px;
     }
 
     .about__grid {
@@ -2010,9 +2019,9 @@ body {
     }
 
     .about__grid-card {
-        width: 100%;
+        width: 300px;
         padding: 16px;
-        gap: 12px;
+        justify-content: space-evenly;
     }
 
     .about__grid-card-title {
@@ -2023,6 +2032,8 @@ body {
     .about__grid-card-content {
         font-size: 13px;
         line-height: 18px;
+        height: 40px;
+        text-align: start;
     }
 
     .photo__person {
@@ -2055,6 +2066,7 @@ body {
     .awards__grid {
         gap: 16px;
         margin-top: 24px;
+        grid-template-columns: repeat(1, 1fr);
     }
 
     .award-card {
@@ -2125,7 +2137,7 @@ body {
 
     .footer__legal-links {
         flex-direction: column;
-        gap: 12px;
+        gap: 6px;
     }
 
     .footer__legal-link,
