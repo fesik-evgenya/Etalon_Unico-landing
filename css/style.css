@@ -1261,11 +1261,12 @@ body {
     .about__mission-title {
         font-size: 18px;
         line-height: 24px;
+        max-width: 490px;
     }
 
     .about__mission-content {
         font-size: 14px;
-        line-height: 21px; /* 150% */
+        line-height: 21px;
         text-align: right;
     }
 
@@ -1341,7 +1342,7 @@ body {
 }
 
 /* ============================================
-   МОБИЛЬНЫЕ (max-width: 767px)
+   БОЛЬШИЕ МОБИЛЬНЫЕ (max-width: 767px)
    ============================================ */
 @media (max-width: 767px) {
     /* ----- Общие контейнеры ----- */
@@ -1689,6 +1690,7 @@ body {
     .about__mission-title {
         font-size: 12px;
         line-height: 20px;
+        max-width: 500px;
     }
 
     .about__mission-content {
@@ -1760,5 +1762,375 @@ body {
     .footer__legal-dev {
         font-size: 8px;
         line-height: 10px;
+    }
+}
+
+/* ============================================
+   МОБИЛЬНЫЕ УЗКИЕ ЭКРАНЫ (max-width: 430px)
+   ============================================ */
+@media (max-width: 430px) {
+    /* ----- Контейнер и общие отступы ----- */
+    .container {
+        padding: 0 16px;
+    }
+
+    .section {
+        padding: 24px 0;
+        margin: 0;
+    }
+
+    .section__title {
+        font-size: 24px;
+        line-height: 30px;
+        margin-bottom: 8px;
+    }
+
+    /* ----- Шапка (header) ----- */
+    .header {
+        padding: 8px 0;
+        height: auto;
+        min-height: 56px;
+    }
+
+    .header__inner {
+        width: 100%;
+        padding: 0 16px;
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .logo img {
+        width: 100%;
+        height: auto;
+    }
+
+    .header__contacts {
+        width: auto;
+        padding: 0;
+    }
+
+    .btn {
+        width: 80px;
+        height: 32px;
+        font-size: 10px;
+        line-height: 12px;
+        padding: 4px 8px;
+    }
+
+    /* ----- Hero ----- */
+    .hero {
+        padding: 20px 0 16px;
+    }
+
+    .hero__title,  .hero__subtitle {
+        font-size: 22px;
+        line-height: 28px;
+    }
+
+    .hero__subtitle {
+        width: 300px;
+        background: linear-gradient(90deg, var(--color-gold), #B49531, var(--color-text));
+        background-clip: text;
+        -webkit-background-clip: text;
+    }
+
+    /* ----- Карточки событий ----- */
+    .card {
+        padding: 20px 0;
+        width: 350px;
+    }
+
+    .card__title {
+        font-size: 20px;
+        line-height: 26px;
+        padding: 0 8px;
+        width: 300px;
+    }
+
+    .cards__grid {
+        align-items: center;
+    }
+
+    .card__slider {
+        padding: 0 0 16px;
+        width: 100%;
+    }
+
+    .card__slider-img {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 320 / 220;
+        object-fit: cover;
+    }
+
+    .tui-pager {
+        gap: 6px;
+    }
+
+    .badge {
+        left: 12px;
+        top: 12px;
+        padding: 4px 10px;
+        font-size: 8px;
+        line-height: 10px;
+    }
+
+    .card__grid {
+        width: 100%;
+        padding: 0;
+        margin-left: 0;
+    }
+
+    .card__content {
+        padding: 12px 0 12px 12px;
+    }
+
+    .card__subtitle {
+        font-size: 18px;
+        line-height: 24px;
+    }
+
+    .card__desc {
+        font-size: 13px;
+        line-height: 18px;
+    }
+
+    /* ----- Шаги работы ----- */
+    .steps {
+        padding: 24px 0;
+        gap: 20px;
+    }
+
+    .steps__list {
+        gap: 16px;
+    }
+
+    .step {
+        height: 200px;
+        width: 350px;
+        padding: 16px 20px 20px;
+        gap: 12px;
+        position: relative;
+    }
+
+    .step__act {
+        width: 100%;
+        gap: 12px;
+        flex-direction: row;
+        height: auto;
+    }
+
+    .step__number:first-child {
+        font-size: 28px;
+        line-height: 34px;
+    }
+
+    .step__act .step__title {
+        font-size: 16px;
+        line-height: 20px;
+    }
+
+    .step__arrow {
+        left: 0;
+        bottom: 0;
+        transform: rotate(90deg);
+        font-size: 24px;
+    }
+
+    .step:last-child .step__arrow {
+        display: none;
+    }
+
+    .step__desc {
+        font-size: 13px;
+        line-height: 18px;
+        height: auto;
+        margin-top: 8px;
+    }
+
+    /* ----- Партнёры (логотипы) ----- */
+    .partner {
+        padding: 24px 0;
+        gap: 24px;
+    }
+
+    .logos {
+        gap: 16px;
+    }
+
+    .logos__line {
+        gap: 20px;
+        padding: 0 16px;
+        height: 50px;
+    }
+
+    .logos__line img {
+        height: 24px;
+    }
+
+    /* ----- О компании ----- */
+    .about {
+        padding: 0 0 24px;
+        gap: 24px;
+    }
+
+    .about__main {
+        width: 100%;
+        padding: 0 16px;
+        gap: 12px;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about__logo {
+        width: 80px;
+        height: 62px;
+    }
+
+    .about__title {
+        font-size: 24px;
+        line-height: 30px;
+    }
+
+    .about__subtitle {
+        font-size: 16px;
+        line-height: 22px;
+        max-width: 100%;
+    }
+
+    .about__grid {
+        gap: 16px;
+        width: 100%;
+    }
+
+    .about__grid-left {
+        width: 100%;
+        padding: 0 16px;
+    }
+
+    .about__grid-card {
+        width: 100%;
+        padding: 16px;
+        gap: 12px;
+    }
+
+    .about__grid-card-title {
+        font-size: 18px;
+        line-height: 24px;
+    }
+
+    .about__grid-card-content {
+        font-size: 13px;
+        line-height: 18px;
+    }
+
+    .photo__person {
+        width: 100%;
+        max-width: 280px;
+        height: auto;
+        aspect-ratio: 280 / 340;
+    }
+
+    .about__mission {
+        width: 100%;
+        padding: 0 16px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .about__mission-title {
+        font-size: 14px;
+        line-height: 20px;
+        text-align: center;
+    }
+
+    .about__mission-content {
+        font-size: 12px;
+        line-height: 18px;
+        text-align: center;
+    }
+
+    /* ----- Награды (если секция добавлена) ----- */
+    .awards__grid {
+        gap: 16px;
+        margin-top: 24px;
+    }
+
+    .award-card {
+        padding: 16px;
+    }
+
+    .award-year {
+        font-size: 14px;
+        margin-bottom: 6px;
+    }
+
+    .award-title {
+        font-size: 16px;
+        line-height: 22px;
+        margin-bottom: 6px;
+    }
+
+    .award-desc {
+        font-size: 12px;
+        line-height: 16px;
+    }
+
+    .award-future-icon {
+        font-size: 28px;
+        margin-bottom: 8px;
+    }
+
+    /* ----- Футер ----- */
+    .footer {
+        padding: 30px 16px;
+        gap: 16px;
+    }
+
+    .footer__main {
+        width: 100%;
+        gap: 20px;
+    }
+
+    .footer__main-phones {
+        align-items: center;
+        width: auto;
+    }
+
+    .footer__phone {
+        font-size: 12px;
+        line-height: 16px;
+    }
+
+    .footer__main-sotial {
+        gap: 16px;
+    }
+
+    .footer__main-sotial svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    .footer__legal {
+        margin-right: 0;
+        padding: 8px 0;
+        gap: 8px;
+    }
+
+    .footer__legal-copy {
+        font-size: 10px;
+        line-height: 14px;
+    }
+
+    .footer__legal-links {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .footer__legal-link,
+    .footer__legal-dev {
+        font-size: 10px;
+        line-height: 14px;
     }
 }
