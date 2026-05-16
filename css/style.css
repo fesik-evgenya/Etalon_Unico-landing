@@ -500,21 +500,21 @@ body {
 .logos__line {
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
     align-items: center;
     gap: 60px;
     background: var(--color-white);
     flex-wrap: nowrap;
     overflow-x: hidden;
     width: 100%;
-    padding-left: 20px;
-    padding-right: 20px;
+    height: 90px;
     box-sizing: border-box;
+    position: relative;
 }
 
 .logos__line img {
     flex-shrink: 0;
     height: 60px;
+    width: auto;
 }
 
 /* ===== БЛОК О КОМПАНИИ ===== */
@@ -635,7 +635,7 @@ body {
     box-sizing: border-box;
     background: #D9D9D9;
     border: 1px solid var(--color-gold);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
     border-radius: 12px;
 }
 
@@ -1186,7 +1186,6 @@ body {
 
     .logos__line {
         gap: 40px;
-        padding: 10px 0;
         height: 80px;
     }
 
@@ -1593,14 +1592,11 @@ body {
 
     .logos__line {
         gap: 30px;
-        padding: 0;
         height: 60px;
-        width: 100%;
     }
 
     .logos__line img {
-        height: 20px;
-        width: auto;
+        height: 30px;
     }
 
     /* ----- О компании ----- */
@@ -1978,7 +1974,6 @@ body {
 
     .logos__line {
         gap: 20px;
-        padding: 0 16px;
         height: 50px;
     }
 
@@ -2292,4 +2287,185 @@ body {
         font-size: 10px;
         padding: 4px 10px;
     }
+}
+
+/* ============================================
+   ДОПОЛНИТЕЛЬНЫЕ АНИМАЦИИ И БЕСКОНЕЧНАЯ ПРОКРУТКА
+   ============================================ */
+
+/* ----- Ключевые кадры анимаций ----- */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes softPulse {
+    0% {
+        opacity: 0.6;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+    100% {
+        opacity: 0.6;
+        transform: scale(1);
+    }
+}
+
+@keyframes gentleShake {
+    0% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-2px);
+    }
+    75% {
+        transform: translateX(2px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes moveRight {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+@keyframes moveLeft {
+    0% {
+        transform: translateX(-50%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* ----- Плавное появление элементов при скролле ----- */
+.fade-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.fade-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ----- Декоративные звёздочки у заголовков секций ----- */
+.section__title::before,
+.section__title::after {
+    content: '✦';
+    font-size: 24px;
+    color: var(--color-gold);
+    display: inline-block;
+    margin: 0 12px;
+    opacity: 0.5;
+    animation: softPulse 2s infinite ease-in-out;
+}
+
+/* Скрываем звёздочки на мобильных (чтобы не загромождать) */
+@media (max-width: 767px) {
+    .section__title::before,
+    .section__title::after {
+        display: none;
+    }
+}
+
+/* ----- Лёгкое покачивание стрелки в шагах при наведении ----- */
+.step__arrow {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.step:hover .step__arrow {
+    animation: gentleShake 0.4s ease;
+}
+
+/* ----- Увеличение номера шага при наведении ----- */
+.step__number {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.step:hover .step__number {
+    transform: scale(1.1);
+    opacity: 0.8;
+}
+
+/* ----- Иконки соцсетей в футере ----- */
+.footer__main-sotial a svg {
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.footer__main-sotial a:hover svg {
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 4px var(--color-gold));
+}
+
+/* ----- Бейджи на карточках при наведении на слайдер ----- */
+.badge {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.card__slider:hover .badge {
+    opacity: 1;
+    transform: scale(1.02);
+}
+
+/* ----- Карточки награды – плавное появление и подъём ----- */
+.award-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* ----- БЕСКОНЕЧНАЯ ПРОКРУТКА ЛОГОТИПОВ (БЕГУЩАЯ СТРОКА) ----- */
+.logos__line {
+    overflow-x: hidden;
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 60px;
+    padding: 0 !important;
+}
+
+.logos__track {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: inherit;
+    width: max-content;
+}
+
+.logos__track img {
+    flex-shrink: 0;
+    height: 60px;
+    width: auto;
+}
+
+/* Адаптив */
+@media (max-width: 1024px) {
+    .logos__line { gap: 40px; }
+    .logos__track img { height: 40px; }
+}
+@media (max-width: 767px) {
+    .logos__line { gap: 30px; }
+    .logos__track img { height: 30px; }
+}
+@media (max-width: 430px) {
+    .logos__line { gap: 20px; }
+    .logos__track img { height: 24px; }
 }
