@@ -953,6 +953,14 @@ body {
     width: fit-content;
 }
 
+.btn.btn__accept {
+    width: auto !important;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
 .privacy-questions {
     font-family: var(--font-body), system-ui, sans-serif;
     font-weight: 400;
@@ -2144,5 +2152,144 @@ body {
     .footer__legal-dev {
         font-size: 10px;
         line-height: 14px;
+    }
+}
+
+/* ============================================
+   АДАПТИВ ДЛЯ СТРАНИЦ ПОЛИТИКИ И ПОЛЬЗОВАТЕЛЬСКОГО СОГЛАШЕНИЯ
+   ============================================ */
+
+/* Планшет (до 1024px) */
+@media (max-width: 1024px) {
+    .legal-page {
+        width: 90%;
+        max-width: 700px;
+        padding: 40px 20px;
+    }
+
+    .divider {
+        width: 100%;
+        max-width: 500px;
+        align-items: center;
+    }
+
+    .legal-page h2 {
+        width: 100%;
+        font-size: 22px;
+        line-height: 28px;
+    }
+
+    .confirm {
+        width: 100%;
+        padding: 40px 20px;
+    }
+}
+
+/* Мобильные (до 767px) */
+@media (max-width: 767px) {
+    .legal-page {
+        width: 100%;
+        padding: 30px 16px;
+        gap: 12px;
+    }
+
+    .legal-page h1 {
+        font-size: 28px;
+        line-height: 34px;
+    }
+
+    .divider {
+        width: 100%;
+        max-width: none;
+    }
+
+    .legal-date {
+        font-size: 14px;
+    }
+
+    .legal-page h2 {
+        font-size: 20px;
+        line-height: 26px;
+        gap: 4px;
+    }
+
+    .legal-page p,
+    .legal-page li {
+        font-size: 13px;
+        line-height: 18px;
+    }
+
+    .legal__block {
+        padding: 6px 0 6px 10px;
+    }
+
+    .confirm {
+        padding: 30px 16px;
+        gap: 30px;
+    }
+
+    .confirm__message {
+        font-size: 14px;
+        line-height: 18px;
+    }
+
+    .btn__accept {
+        font-size: 11px;
+        padding: 6px 12px;
+    }
+
+    .btn__accept span {
+        width: 100%;
+    }
+
+    .privacy-questions {
+        font-size: 12px;
+    }
+}
+
+/* Узкие мобильные (до 430px) */
+@media (max-width: 430px) {
+    .legal-page {
+        padding: 20px;
+        gap: 10px;
+    }
+
+    .legal-page h1 {
+        font-size: 24px;
+        line-height: 30px;
+    }
+
+    .legal-date {
+        font-size: 12px;
+    }
+
+    .legal-page h2 {
+        font-size: 18px;
+        line-height: 24px;
+    }
+
+    .legal-page p,
+    .legal-page li {
+        font-size: 12px;
+        line-height: 16px;
+    }
+
+    .legal__block {
+        padding: 4px 0 4px 8px;
+    }
+
+    .confirm {
+        padding: 20px 12px;
+        gap: 20px;
+    }
+
+    .confirm__message {
+        font-size: 13px;
+        line-height: 17px;
+    }
+
+    .btn__accept {
+        font-size: 10px;
+        padding: 4px 10px;
     }
 }
