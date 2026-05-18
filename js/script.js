@@ -225,7 +225,7 @@ const SCROLL_SPEED = 25;
     document.body.appendChild(homeIcon);
 })();
 
-// ===== 5. СЛАЙДЕРЫ ИЗОБРАЖЕНИЙ С КРОССФЕЙДОМ (ПАГИНАЦИЯ ПОД ИЗОБРАЖЕНИЕМ) =====
+// ===== 5. СЛАЙДЕРЫ ИЗОБРАЖЕНИЙ С КРОССФЕЙДОМ =====
 (function() {
     const sliders = document.querySelectorAll('.card__slider');
     if (!sliders.length) return;
