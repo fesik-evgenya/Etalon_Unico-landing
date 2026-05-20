@@ -609,15 +609,15 @@ body {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 20px;
+    padding: 40px 35px 30px 40px;
     gap: 28px;
     background: var(--color-white);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
     border-radius: 12px;
     color: var(--color-text);
     font-family: var(--font-body), system-ui, sans-serif;
-    width: 100%;
-    height: 140px;
+    height: 185px;
+    width: 340px;
 }
 
 .about__grid-card-title {
@@ -631,6 +631,7 @@ body {
     font-weight: 400;
     font-size: 16px;
     line-height: 20px;
+    Vertical-align: center;
 }
 
 .photo__person {
@@ -675,8 +676,6 @@ body {
 }
 
 .awards__grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
     gap: 30px;
     margin-top: 40px;
 }
@@ -694,12 +693,19 @@ body {
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
+.award-firstLine {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin-bottom: 5px;
+    margin-top: 15px;
+}
+
 .award-year {
     font-weight: 700;
     font-size: 18px;
     line-height: 22px;
     color: var(--color-gold);
-    margin-bottom: 12px;
     letter-spacing: 0.05em;
 }
 
@@ -710,8 +716,6 @@ body {
     font-size: 20px;
     line-height: 28px;
     color: var(--color-text);
-    margin-bottom: 12px;
-    height: 60px;
 }
 
 .award-desc {
@@ -1033,17 +1037,17 @@ body {
     .about__subtitle { font-size: 20px; line-height: 24px; }
     .about__grid { gap: 20px; justify-content: space-evenly; max-width: 768px; padding: 10px; }
     .about__grid-left { width: 340px; gap: 16px; }
-    .about__grid-card { width: 340px; padding: 20px; gap: 20px; height: auto; }
+    .about__grid-card { width: 340px; padding: 20px; gap: 20px; height: 125px; }
     .about__grid-card-title { font-size: 20px; line-height: 24px; }
     .about__grid-card-content { font-size: 14px; line-height: 17px; }
     .about__grid svg { display: block; width: 1px; height: 300px; margin: 0; }
-    .photo__person { width: 100%; height: 500px; object-fit: scale-down; }
+    .photo__person { width: 100%; height: 400px; object-fit: scale-down; }
     .about__mission { align-items: flex-end; gap: 8px; }
     .about__mission-title { font-size: 18px; line-height: 24px; max-width: 490px; }
     .about__mission-content { font-size: 14px; line-height: 21px; text-align: right; }
 
     .awards__grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
-    .award-card { padding: 20px; }
+    .award-card { padding: 20px; max-width: 720px}
     .award-title { font-size: 18px; line-height: 24px; }
     .award-desc { font-size: 13px; line-height: 18px; }
 
@@ -1056,8 +1060,8 @@ body {
     .footer__legal { margin-right: 0; max-width: 100%; }
     .footer__legal-links { flex-direction: row; gap: 24px; }
     .footer__legal-copy, .footer__legal-link, .footer__legal-dev { font-size: 10px; line-height: 12px; }
-}
 
+}
 /* ============================================
    БОЛЬШИЕ МОБИЛЬНЫЕ (max-width: 767px)
    ============================================ */
@@ -1193,19 +1197,20 @@ body {
     .about__subtitle { font-size: 16px; line-height: 22px; max-width: 300px; }
     .about__grid { gap: 16px; width: 100%; }
     .about__grid-left { width: 100%; padding: 0 16px; }
-    .about__grid-card { width: 300px; padding: 16px; justify-content: space-evenly; }
+    .about__grid-card { width: 300px; padding: 16px; justify-content: center; align-items: center; gap: 20px; }
     .about__grid-card-title { font-size: 18px; line-height: 24px; }
-    .about__grid-card-content { font-size: 13px; line-height: 18px; height: 40px; text-align: start; }
-    .photo__person { width: 100%; max-width: 280px; height: auto; aspect-ratio: 280 / 340; }
+    .about__grid-card-content { font-size: 13px; line-height: 18px; height: 40px; width: 220px; text-align: center }
+    .photo__person { width: 300px; height: auto; aspect-ratio: 280 / 340; }
     .about__mission { width: 100%; padding: 0 16px; align-items: center; text-align: center; }
-    .about__mission-title { font-size: 14px; line-height: 20px; text-align: center; }
+    .about__mission-title { font-size: 14px; line-height: 20px; text-align: center; width: 380px; }
     .about__mission-content { font-size: 12px; line-height: 18px; text-align: center; }
 
     .awards__grid { gap: 16px; margin-top: 24px; grid-template-columns: repeat(1, 1fr); }
-    .award-card { padding: 16px; }
-    .award-year { font-size: 14px; margin-bottom: 6px; }
-    .award-title { font-size: 16px; line-height: 22px; margin-bottom: 6px; }
-    .award-desc { font-size: 12px; line-height: 16px; }
+    .award-card { padding: 16px; margin-left: 40px; margin-right: 40px;}
+    .award-firstLine {flex-direction: column; gap:0; }
+    .award-year { font-size: 14px; }
+    .award-title { font-size: 16px; line-height: 22px; margin-bottom: 6px; text-align: center; }
+    .award-desc { font-size: 12px; line-height: 16px; text-align: center; width: 270px; margin: 0 auto; }
     .award-future-icon { font-size: 28px; margin-bottom: 8px; }
 
     .footer { padding: 30px 16px; gap: 16px; }
@@ -1454,4 +1459,85 @@ body {
 }
 @media (max-width: 430px) {
     .tui-pager { margin-top: 12px; }
+}
+
+/* ===== НАВИГАЦИОННАЯ ПАНЕЛЬ (оснавная страница) ===== */
+.nav-icons {
+    position: fixed;
+    right: 20px;
+    top: 320px;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 1000;
+}
+
+.nav-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background: rgba(24, 7, 14, 0.8);
+    backdrop-filter: blur(4px);
+    border-radius: 50%;
+    color: var(--color-gold, #D4AF37);
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    animation: softPulseNav 2s infinite ease-in-out;
+}
+
+/* SVG внутри иконок */
+.nav-icon svg {
+    width: 24px;
+    height: 24px;
+    stroke: currentColor;
+    stroke-width: 1.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+}
+
+/* Анимация – такая же, как у .back-to-home-icon */
+@keyframes softPulseNav {
+    0% { opacity: 0.85; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.008); }
+    100% { opacity: 0.85; transform: scale(1); }
+}
+
+/* Hover – как у .back-to-home-icon */
+.nav-icon:hover {
+    transform: scale(1.05);
+    background: rgba(24, 7, 14, 0.95);
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+}
+
+/* Адаптив – как у .back-to-home-icon */
+@media (max-width: 767px) {
+    .nav-icons {
+        right: 12px;
+        gap: 10px;
+        top: 220px;
+    }
+
+    .nav-icon {
+        width: 40px;
+        height: 40px;
+    }
+    .nav-icon svg {
+        width: 20px;
+        height: 20px;
+    }
+}
+@media (max-width: 430px) {
+    .nav-icon {
+        width: 36px;
+        height: 36px;
+    }
+    .nav-icon svg {
+        width: 18px;
+        height: 18px;
+    }
 }
