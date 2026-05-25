@@ -538,7 +538,6 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0 0 40px;
     gap: 40px;
 }
 
@@ -552,8 +551,8 @@ body {
 }
 
 .about__logo {
-    width: 250px;
-    height: 191px;
+    width: 175px;
+    height: 134px;
 }
 
 .about__title-content {
@@ -585,7 +584,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0 0 0 20px;
     gap: 40px;
     width: 915px;
 }
@@ -593,9 +591,8 @@ body {
 .about__grid-left {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     padding: 0;
-    gap: 16px;
+    gap: 40px;
 }
 
 .about__grid-right {
@@ -603,20 +600,21 @@ body {
     justify-content: flex-end;
     align-items: flex-start;
     padding: 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
 }
 
 .about__grid-card {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    padding: 40px 35px 30px 40px;
+    justify-content: center;
+    /*align-items: flex-start;*/
+    padding: 40px;
     gap: 28px;
     background: var(--color-white);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
     border-radius: 12px;
     color: var(--color-text);
     font-family: var(--font-body), system-ui, sans-serif;
-    height: 185px;
+    height: 174px;
     width: 340px;
 }
 
@@ -632,6 +630,7 @@ body {
     font-size: 16px;
     line-height: 20px;
     Vertical-align: center;
+    text-align: center;
 }
 
 .photo__person {
@@ -658,6 +657,7 @@ body {
     line-height: 29px;
     text-align: right;
     color: var(--color-text);
+    margin: 20px auto 40px;
 }
 
 .about__mission-content {
@@ -677,28 +677,41 @@ body {
 
 .awards__grid {
     gap: 30px;
-    margin-top: 40px;
+}
+
+.award-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    background: var(--color-white);
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 900px;
+    color: var(--color-text);
+}
+
+.award-cards:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.award-mainTitle {
+    text-align: start;
+    padding-left: 80px;
 }
 
 .award-card {
-    background: var(--color-white);
-    border-radius: 12px;
-    padding: 24px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.award-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
 }
 
 .award-firstLine {
     display: flex;
     gap: 15px;
     align-items: center;
-    margin-bottom: 5px;
-    margin-top: 15px;
 }
 
 .award-year {
@@ -1036,8 +1049,8 @@ body {
     .about__title { font-size: 28px; line-height: 34px; }
     .about__subtitle { font-size: 20px; line-height: 24px; }
     .about__grid { gap: 20px; justify-content: space-evenly; max-width: 768px; padding: 10px; }
-    .about__grid-left { width: 340px; gap: 16px; }
-    .about__grid-card { width: 340px; padding: 20px; gap: 20px; height: 125px; }
+    .about__grid-left { width: 340px; gap: 40px; }
+    .about__grid-card { width: 340px; padding: 20px; gap: 20px; height: 109px; }
     .about__grid-card-title { font-size: 20px; line-height: 24px; }
     .about__grid-card-content { font-size: 14px; line-height: 17px; }
     .about__grid svg { display: block; width: 1px; height: 300px; margin: 0; }
@@ -1047,7 +1060,7 @@ body {
     .about__mission-content { font-size: 14px; line-height: 21px; text-align: right; }
 
     .awards__grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
-    .award-card { padding: 20px; max-width: 720px}
+    .award-cards { padding: 40px; max-width: 720px}
     .award-title { font-size: 18px; line-height: 24px; }
     .award-desc { font-size: 13px; line-height: 18px; }
 
@@ -1195,8 +1208,8 @@ body {
     .about__logo { width: 80px; height: 62px; }
     .about__title { font-size: 24px; line-height: 30px; }
     .about__subtitle { font-size: 16px; line-height: 22px; max-width: 300px; }
-    .about__grid { gap: 16px; width: 100%; }
-    .about__grid-left { width: 100%; padding: 0 16px; }
+    .about__grid { gap: 24px; width: 100%; }
+    .about__grid-left { width: 100%; padding: 0 16px; gap: 24px; }
     .about__grid-card { width: 300px; padding: 16px; justify-content: center; align-items: center; gap: 20px; }
     .about__grid-card-title { font-size: 18px; line-height: 24px; }
     .about__grid-card-content { font-size: 13px; line-height: 18px; height: 40px; width: 220px; text-align: center }
@@ -1206,8 +1219,9 @@ body {
     .about__mission-content { font-size: 12px; line-height: 18px; text-align: center; }
 
     .awards__grid { gap: 16px; margin-top: 24px; grid-template-columns: repeat(1, 1fr); }
-    .award-card { padding: 16px; margin-left: 40px; margin-right: 40px;}
-    .award-firstLine {flex-direction: column; gap:0; }
+    .award-cards { padding: 16px; margin-left: 40px; margin-right: 40px; max-width: 300px; }
+    .award-mainTitle { padding-left: 0; text-align: center; }
+    .award-firstLine { flex-direction: column; gap:0; }
     .award-year { font-size: 14px; }
     .award-title { font-size: 16px; line-height: 22px; margin-bottom: 6px; text-align: center; }
     .award-desc { font-size: 12px; line-height: 16px; text-align: center; width: 270px; margin: 0 auto; }
