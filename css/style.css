@@ -705,7 +705,7 @@ body {
 .award-card {
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    gap: 15px;
 }
 
 .award-firstLine {
