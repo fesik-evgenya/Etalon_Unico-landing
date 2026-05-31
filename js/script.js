@@ -120,6 +120,7 @@ const SCROLL_SPEED = 25;
     elements.forEach(el => observer.observe(el));
 })();
 
+
 // ===== 3. КНОПКА ПОДТВЕРЖДЕНИЯ СОГЛАСИЯ (страница политики) =====
 (function() {
     const confirmBtn = document.getElementById('confirmBtn');

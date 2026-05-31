@@ -1425,6 +1425,7 @@ body {
     transform: scale(0.96);
 }
 
+
 /* ===== ПАГИНАЦИЯ ПОД ИЗОБРАЖЕНИЯМИ ===== */
 .card__slider {
     display: flex;
