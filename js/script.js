@@ -225,7 +225,7 @@ const SCROLL_SPEED = 25;
     document.body.appendChild(homeIcon);
 })();
 
-// ===== 5. СЛАЙДЕРЫ ИЗОБРАЖЕНИЙ С КРОССФЕЙДОМ =====
+// ===== 5. СЛАЙДЕРЫ ИЗОБРАЖЕНИЙ С КРОССФЕЙДОМ + СВАЙП =====
 (function() {
     const sliders = document.querySelectorAll('.card__slider');
     if (!sliders.length) return;
@@ -262,6 +262,7 @@ const SCROLL_SPEED = 25;
         const badgeSpan = slider.querySelector('.badge span');
         const folder = getImageFolder(badgeSpan);
 
+        // Загрузка изображений (существующий код)
         const validPaths = [];
         for (let i = 1; i <= imagesCount; i++) {
             const pngPath = `img/content/${folder}/${i}.png`;
@@ -280,13 +281,12 @@ const SCROLL_SPEED = 25;
         }
         if (validPaths.every(p => p === null)) return;
 
-        // Создаём контейнер для изображений
+        // Создаём контейнер для изображений (существующий код)
         const imagesContainer = document.createElement('div');
         imagesContainer.className = 'slider-images';
         slider.style.display = 'flex';
         slider.style.flexDirection = 'column';
 
-        // Создаём два слоя
         const front = document.createElement('img');
         const back = document.createElement('img');
         front.className = 'card__slider-img';
@@ -304,17 +304,14 @@ const SCROLL_SPEED = 25;
 
         imagesContainer.appendChild(back);
         imagesContainer.appendChild(front);
-
-        // Скрываем оригинальное изображение
         originalImg.style.display = 'none';
-
-        // Вставляем контейнер с изображениями перед пагинацией
         slider.insertBefore(imagesContainer, pager);
 
         let currentIndex = 0;
         let autoTimer = null;
         let isAnimating = false;
 
+        // Вспомогательные функции (существующий код)
         function updateActiveDot(index) {
             dots.forEach((dot, i) => {
                 const rect = dot.querySelector('rect');
@@ -385,11 +382,13 @@ const SCROLL_SPEED = 25;
         }
 
         function startAuto() {
+            if (isSwiping) return; // не возобновляем авто-прокрутку во время свайпа
             if (autoTimer) clearInterval(autoTimer);
             autoTimer = setInterval(() => {
-                if (!isAnimating) changeImage((currentIndex + 1) % imagesCount);
+                if (!isAnimating && !isSwiping) changeImage((currentIndex + 1) % imagesCount);
             }, 5000);
         }
+
         function stopAuto() {
             if (autoTimer) {
                 clearInterval(autoTimer);
@@ -397,6 +396,7 @@ const SCROLL_SPEED = 25;
             }
         }
 
+        // Клики по точкам (существующий код)
         dots.forEach((dot, idx) => {
             dot.style.cursor = 'pointer';
             dot.addEventListener('click', (e) => {
@@ -407,8 +407,90 @@ const SCROLL_SPEED = 25;
             });
         });
 
-        slider.addEventListener('mouseenter', stopAuto);
-        slider.addEventListener('mouseleave', startAuto);
+        // ----- НОВАЯ ЧАСТЬ: обработка свайпов -----
+        let startX = 0;
+        let startY = 0;
+        let isSwiping = false;
+
+        // Touch-события
+        function handleTouchStart(e) {
+            startX = e.touches[0].clientX;
+            startY = e.touches[0].clientY;
+            isSwiping = true;
+        }
+
+        function handleTouchMove(e) {
+            if (!isSwiping) return;
+            const deltaX = e.touches[0].clientX - startX;
+            const deltaY = e.touches[0].clientY - startY;
+            // Если горизонтальное движение больше вертикального – запрещаем прокрутку страницы
+            if (Math.abs(deltaX) > Math.abs(deltaY)) {
+                e.preventDefault();
+            }
+        }
+
+        function handleTouchEnd(e) {
+            if (!isSwiping) return;
+            isSwiping = false;
+            const deltaX = e.changedTouches[0].clientX - startX;
+            const threshold = 50; // минимальное расстояние для свайпа
+            if (Math.abs(deltaX) > threshold) {
+                stopAuto();
+                if (deltaX > 0) {
+                    changeImage(currentIndex - 1); // свайп вправо – предыдущий слайд
+                } else {
+                    changeImage(currentIndex + 1); // свайп влево – следующий слайд
+                }
+                startAuto();
+            }
+        }
+
+        // Mouse-события (для десктопа)
+        function handleMouseDown(e) {
+            startX = e.clientX;
+            startY = e.clientY;
+            isSwiping = true;
+            e.preventDefault(); // отключаем стандартное выделение/перетаскивание изображения
+        }
+
+        function handleMouseUp(e) {
+            if (!isSwiping) return;
+            isSwiping = false;
+            const deltaX = e.clientX - startX;
+            const threshold = 50;
+            if (Math.abs(deltaX) > threshold) {
+                stopAuto();
+                if (deltaX > 0) {
+                    changeImage(currentIndex - 1);
+                } else {
+                    changeImage(currentIndex + 1);
+                }
+                startAuto();
+            }
+        }
+
+        function handleMouseLeave() {
+            // Если мы просто увели мышь без завершения свайпа – сбрасываем флаг
+            if (isSwiping) {
+                isSwiping = false;
+            }
+            startAuto(); // запускаем авто, если не свайпим
+        }
+
+        // Навешиваем обработчики на весь слайдер
+        slider.addEventListener('touchstart', handleTouchStart, { passive: false });
+        slider.addEventListener('touchmove', handleTouchMove, { passive: false });
+        slider.addEventListener('touchend', handleTouchEnd);
+
+        slider.addEventListener('mousedown', handleMouseDown);
+        slider.addEventListener('mouseup', handleMouseUp);
+        slider.addEventListener('mouseleave', handleMouseLeave);
+
+        // Старые hover‑события удаляем (они заменены новым mouseleave)
+        // Оставляем только запуск авто при уходе мыши, но с проверкой флага isSwiping
+        // (уже внутри handleMouseLeave)
+
+        // Первичный запуск авто
         startAuto();
     }
 
