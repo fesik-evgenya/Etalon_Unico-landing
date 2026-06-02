@@ -215,7 +215,7 @@ const SCROLL_SPEED = 25;
             100% { opacity: 0.7; transform: scale(1); }
         }
         @media (max-width: 767px) {
-            .back-to-home-icon { top: 12px; right: 12px; width: 40px; height: 40px; }
+            .back-to-home-icon { top: 70px; right: 12px; width: 40px; height: 40px; }
             .back-to-home-icon svg { width: 24px; height: 24px; }
         }
     `;
