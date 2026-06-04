@@ -49,7 +49,6 @@ ol {
     list-style: none;
 }
 
-/* Уважение к настройкам движения */
 @media (prefers-reduced-motion: reduce) {
     html:focus-within {
         scroll-behavior: auto;
@@ -322,7 +321,7 @@ body {
     touch-action: pan-y;
 }
 
-/* === ИСПРАВЛЕНИЕ: Контейнер изображений === */
+/* Контейнер изображений  */
 .slider-images {
     position: relative;
     width: 100%;
@@ -331,7 +330,6 @@ body {
     overflow: hidden;               /* обрезаем фото по краям */
 }
 
-/* === ИСПРАВЛЕНИЕ: Только картинки — абсолютные === */
 .card__slider-img {
     position: absolute;
     top: 0;
@@ -1647,7 +1645,8 @@ body {
     }
 
     .about__main {
-        width: 354px;
+        width: 100%;
+        max-width: 354px;
         padding: 0 20px;
         gap: 20px;
         flex-direction: row;
@@ -1675,13 +1674,15 @@ body {
     }
 
     .about__grid-left {
-        width: 320px;
+        width: 100%;
+        max-width: 320px;
         gap: 16px;
         align-items: center;
     }
 
     .about__grid-card {
-        width: 320px;
+        width: 100%;
+        max-width: 320px;
         padding: 30px 20px;
         gap: 20px;
         min-height: auto;
@@ -1732,7 +1733,8 @@ body {
     .about__mission {
         align-items: center;
         text-align: center;
-        width: 320px;
+        width: 100%;
+        max-width: 320px;
         gap: 8px;
     }
 
@@ -1902,7 +1904,8 @@ body {
         font-size: 28px;
         line-height: 30px;
         margin-bottom: 8px;
-        width: 350px;
+        width: 100%;
+        max-width: 350px;
     }
 
     .header {
@@ -1954,7 +1957,8 @@ body {
     .hero__title, .hero__subtitle {
         font-size: 26px;
         line-height: 28px;
-        width: 350px;
+        width: 100%;
+        max-width: 350px;
     }
 
     .card {
@@ -1966,7 +1970,8 @@ body {
         font-size: 24px;
         line-height: 26px;
         padding: 0 8px;
-        width: 350px;
+        width: 100%;
+        max-width: 350px;
     }
 
     .cards__grid {
@@ -1974,7 +1979,7 @@ body {
         margin-left: 0;
     }
 
-    /* === ИСПРАВЛЕНИЕ: убрали aspect-ratio и overflow у card__slider === */
+
     .card__slider {
         padding: 0;
         width: 100%;
@@ -1983,7 +1988,6 @@ body {
         border-radius: 0;
     }
 
-    /* === ИСПРАВЛЕНИЕ: только контейнер фото получает пропорции и обрезку === */
     .slider-images {
         width: 100%;
         height: auto;
@@ -2029,7 +2033,8 @@ body {
     .card__desc {
         font-size: 17px;
         line-height: 18px;
-        width: 400px;
+        width: 100%;
+        max-width: 400px;
     }
 
     .steps {
@@ -2042,8 +2047,9 @@ body {
     }
 
     .step {
+        width: 100%;
+        max-width: 370px;
         height: 180px;
-        width: 370px;
         padding: 16px 20px 20px;
         gap: 20px;
     }
@@ -2095,7 +2101,8 @@ body {
         height: auto;
         margin-top: 8px;
         text-align: center;
-        width: 340px;
+        width: 100%;
+        max-width: 340px;
     }
 
     .partner {
@@ -2148,12 +2155,14 @@ body {
 
     .about__grid-left {
         width: 100%;
-        padding: 0 16px;
+        max-width: 370px;
+        padding: 0;
         gap: 24px;
     }
 
     .about__grid-card {
-        width: 370px;
+        width: 100%;
+        max-width: 370px;
         padding: 20px;
         justify-content: center;
         align-items: center;
@@ -2175,7 +2184,8 @@ body {
     }
 
     .photo__person {
-        width: 370px;
+        width: 100%;
+        max-width: 370px;
         height: auto;
     }
 
@@ -2190,7 +2200,8 @@ body {
         font-size: 18px;
         line-height: 18px;
         text-align: right;
-        width: 380px;
+        width: 100%;
+        max-width: 380px;
     }
 
     .about__mission-content {
@@ -2207,9 +2218,10 @@ body {
 
     .award-cards {
         padding: 16px;
-        margin-left: 40px;
-        margin-right: 40px;
-        width: 370px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+        max-width: 370px;
     }
 
     .award-card {
@@ -2241,7 +2253,8 @@ body {
         font-size: 18px;
         line-height: 16px;
         text-align: center;
-        width: 350px;
+        width: 100%;
+        max-width: 350px;
         margin: 0 auto;
     }
 
@@ -2368,9 +2381,9 @@ body {
         margin-right: 3px;
     }
     .card__desc {
-        width: 350px;
+        width: 100%;
+        max-width: 350px;
     }
-
 }
 
 /* ===== ДОПОЛНИТЕЛЬНЫЕ АНИМАЦИИ ===== */
