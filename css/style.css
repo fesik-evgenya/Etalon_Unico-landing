@@ -322,15 +322,17 @@ body {
     touch-action: pan-y;
 }
 
+/* === ИСПРАВЛЕНИЕ: Контейнер изображений === */
 .slider-images {
     position: relative;
     width: 100%;
     flex-shrink: 0;
     height: 500px;
+    overflow: hidden;               /* обрезаем фото по краям */
 }
 
-.card__slider-img,
-.slider-images {
+/* === ИСПРАВЛЕНИЕ: Только картинки — абсолютные === */
+.card__slider-img {
     position: absolute;
     top: 0;
     left: 0;
@@ -339,13 +341,9 @@ body {
     object-fit: cover;
     border-radius: 12px;
     transition: opacity 0.6s ease-in-out;
-}
-
-.card__slider-img {
-    opacity: 0.4;
     background: #2C2C2C;
+    opacity: 0.4;
     text-indent: -9999px;
-    overflow: hidden;
 }
 
 /* Пагинация */
@@ -1976,18 +1974,21 @@ body {
         margin-left: 0;
     }
 
+    /* === ИСПРАВЛЕНИЕ: убрали aspect-ratio и overflow у card__slider === */
     .card__slider {
         padding: 0;
         width: 100%;
         height: auto;
-        aspect-ratio: 5 / 4;
         margin-bottom: 0;
         border-radius: 0;
     }
 
+    /* === ИСПРАВЛЕНИЕ: только контейнер фото получает пропорции и обрезку === */
     .slider-images {
+        width: 100%;
         height: auto;
         aspect-ratio: 5 / 4;
+        overflow: hidden;
     }
 
     .card__slider-img {
@@ -2362,6 +2363,10 @@ body {
 
 /* ===== АДАПТИВ: МОБИЛЬНЫЕ ОЧЕНЬ УЗКИЕ ЭКРАНЫ (max-width: 375px) ===== */
 @media (max-width: 391px) {
+    main {
+        margin-left: 3px;
+        margin-right: 3px;
+    }
     .card__desc {
         width: 350px;
     }
