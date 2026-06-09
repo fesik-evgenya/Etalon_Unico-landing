@@ -120,7 +120,6 @@ const SCROLL_SPEED = 25;
     elements.forEach(el => observer.observe(el));
 })();
 
-
 // ===== 3. КНОПКА ПОДТВЕРЖДЕНИЯ СОГЛАСИЯ (страница политики) =====
 (function() {
     const confirmBtn = document.getElementById('confirmBtn');
@@ -226,18 +225,18 @@ const SCROLL_SPEED = 25;
     document.body.appendChild(homeIcon);
 })();
 
-// ===== 5. СЛАЙДЕРЫ ИЗОБРАЖЕНИЙ С КРОССФЕЙДОМ + СВАЙП =====
+// ===== 5. СЛАЙДЕРЫ: ЛОАДЕР ТОЛЬКО ПРИ ПЕРВОЙ ЗАГРУЗКЕ =====
 (function() {
     const sliders = document.querySelectorAll('.card__slider');
     if (!sliders.length) return;
 
-    function getImageFolder(badgeSpan) {
-        if (!badgeSpan) return 'active';
-        const text = badgeSpan.textContent.trim().toLowerCase();
-        if (text.includes('активный')) return 'active';
-        if (text.includes('элегантный')) return 'elegant';
-        if (text.includes('локация')) return 'location';
-        if (text.includes('фуд')) return 'food';
+    function getFolderByCardId(card) {
+        if (!card) return 'active';
+        const id = card.id;
+        if (id === 'card-barbecue') return 'active';
+        if (id === 'card-business') return 'elegant';
+        if (id === 'card-atmosphere') return 'location';
+        if (id === 'card-opportunities') return 'food';
         return 'active';
     }
 
@@ -253,17 +252,20 @@ const SCROLL_SPEED = 25;
     async function initSlider(slider) {
         const originalImg = slider.querySelector('.card__slider-img');
         const pager = slider.querySelector('.tui-pager');
-        if (!originalImg || !pager) return;
+        const loader = slider.querySelector('.slider-loader');
+        if (!originalImg || !pager || !loader) return;
 
         const allSvgs = Array.from(pager.querySelectorAll('svg'));
         const dots = allSvgs.filter(svg => svg.querySelector('rect') !== null);
         const imagesCount = dots.length;
         if (imagesCount === 0) return;
 
-        const badgeSpan = slider.querySelector('.badge span');
-        const folder = getImageFolder(badgeSpan);
+        const card = slider.closest('.card');
+        const folder = getFolderByCardId(card);
 
-        // Загрузка изображений (существующий код)
+        // Показываем лоадер только перед первой загрузкой изображений
+        loader.style.display = 'flex';
+
         const validPaths = [];
         for (let i = 1; i <= imagesCount; i++) {
             const pngPath = `img/content/${folder}/${i}.png`;
@@ -280,9 +282,11 @@ const SCROLL_SPEED = 25;
                 }
             }
         }
-        if (validPaths.every(p => p === null)) return;
+        if (validPaths.every(p => p === null)) {
+            loader.style.display = 'none';
+            return;
+        }
 
-        // Создаём контейнер для изображений (существующий код)
         const imagesContainer = document.createElement('div');
         imagesContainer.className = 'slider-images';
         slider.style.display = 'flex';
@@ -312,7 +316,6 @@ const SCROLL_SPEED = 25;
         let autoTimer = null;
         let isAnimating = false;
 
-        // Вспомогательные функции (существующий код)
         function updateActiveDot(index) {
             dots.forEach((dot, i) => {
                 const rect = dot.querySelector('rect');
@@ -336,6 +339,9 @@ const SCROLL_SPEED = 25;
         setImage(back, validPaths[0]);
         updateActiveDot(0);
 
+        // Первое изображение загружено – скрываем лоадер навсегда
+        loader.style.display = 'none';
+
         function changeImage(newIndex) {
             if (isAnimating) return;
             if (newIndex === currentIndex) return;
@@ -343,6 +349,7 @@ const SCROLL_SPEED = 25;
             if (newIndex >= imagesCount) newIndex = 0;
 
             isAnimating = true;
+            // Лоадер больше не показываем
             const frontVisible = front.style.opacity === '1';
             const topLayer = frontVisible ? front : back;
             const bottomLayer = frontVisible ? back : front;
@@ -383,7 +390,7 @@ const SCROLL_SPEED = 25;
         }
 
         function startAuto() {
-            if (isSwiping) return; // не возобновляем авто-прокрутку во время свайпа
+            if (isSwiping) return;
             if (autoTimer) clearInterval(autoTimer);
             autoTimer = setInterval(() => {
                 if (!isAnimating && !isSwiping) changeImage((currentIndex + 1) % imagesCount);
@@ -397,7 +404,6 @@ const SCROLL_SPEED = 25;
             }
         }
 
-        // Клики по точкам (существующий код)
         dots.forEach((dot, idx) => {
             dot.style.cursor = 'pointer';
             dot.addEventListener('click', (e) => {
@@ -408,12 +414,10 @@ const SCROLL_SPEED = 25;
             });
         });
 
-        // ----- НОВАЯ ЧАСТЬ: обработка свайпов -----
         let startX = 0;
         let startY = 0;
         let isSwiping = false;
 
-        // Touch-события
         function handleTouchStart(e) {
             startX = e.touches[0].clientX;
             startY = e.touches[0].clientY;
@@ -424,7 +428,6 @@ const SCROLL_SPEED = 25;
             if (!isSwiping) return;
             const deltaX = e.touches[0].clientX - startX;
             const deltaY = e.touches[0].clientY - startY;
-            // Если горизонтальное движение больше вертикального – запрещаем прокрутку страницы
             if (Math.abs(deltaX) > Math.abs(deltaY)) {
                 e.preventDefault();
             }
@@ -434,24 +437,23 @@ const SCROLL_SPEED = 25;
             if (!isSwiping) return;
             isSwiping = false;
             const deltaX = e.changedTouches[0].clientX - startX;
-            const threshold = 50; // минимальное расстояние для свайпа
+            const threshold = 50;
             if (Math.abs(deltaX) > threshold) {
                 stopAuto();
                 if (deltaX > 0) {
-                    changeImage(currentIndex - 1); // свайп вправо – предыдущий слайд
+                    changeImage(currentIndex - 1);
                 } else {
-                    changeImage(currentIndex + 1); // свайп влево – следующий слайд
+                    changeImage(currentIndex + 1);
                 }
                 startAuto();
             }
         }
 
-        // Mouse-события (для десктопа)
         function handleMouseDown(e) {
             startX = e.clientX;
             startY = e.clientY;
             isSwiping = true;
-            e.preventDefault(); // отключаем стандартное выделение/перетаскивание изображения
+            e.preventDefault();
         }
 
         function handleMouseUp(e) {
@@ -471,27 +473,19 @@ const SCROLL_SPEED = 25;
         }
 
         function handleMouseLeave() {
-            // Если мы просто увели мышь без завершения свайпа – сбрасываем флаг
             if (isSwiping) {
                 isSwiping = false;
             }
-            startAuto(); // запускаем авто, если не свайпим
+            startAuto();
         }
 
-        // Навешиваем обработчики на весь слайдер
         slider.addEventListener('touchstart', handleTouchStart, { passive: false });
         slider.addEventListener('touchmove', handleTouchMove, { passive: false });
         slider.addEventListener('touchend', handleTouchEnd);
-
         slider.addEventListener('mousedown', handleMouseDown);
         slider.addEventListener('mouseup', handleMouseUp);
         slider.addEventListener('mouseleave', handleMouseLeave);
 
-        // Старые hover‑события удаляем (они заменены новым mouseleave)
-        // Оставляем только запуск авто при уходе мыши, но с проверкой флага isSwiping
-        // (уже внутри handleMouseLeave)
-
-        // Первичный запуск авто
         startAuto();
     }
 
@@ -502,10 +496,8 @@ const SCROLL_SPEED = 25;
 
 // ===== 6. НАВИГАЦИОННАЯ ПАНЕЛЬ (только на главной странице) =====
 (function() {
-    // Показываем панель только на главной (не на страницах политики/соглашения)
     if (document.querySelector('.legal-page')) return;
 
-    // Массив ссылок: { id: 'id_секции', icon: 'символ или HTML', title: 'подсказка' }
     const navItems = [
         { id: 'top', icon: '🏠', title: 'Наверх' },
         { id: 'card-barbecue', icon: '🔥', title: 'Барбекю для компании' },
@@ -515,13 +507,11 @@ const SCROLL_SPEED = 25;
         { id: 'about-section', icon: '🤝', title: 'О компании' }
     ];
 
-    // Создаём контейнер
     const navContainer = document.createElement('div');
     navContainer.className = 'nav-icons';
 
     navItems.forEach(item => {
         const targetElement = document.getElementById(item.id);
-        // Если элемент с таким id не найден – пропускаем (например, если id не добавлены в HTML)
         if (!targetElement) return;
 
         const link = document.createElement('a');
@@ -531,7 +521,6 @@ const SCROLL_SPEED = 25;
         link.title = item.title;
         link.setAttribute('aria-label', item.title);
 
-        // Плавный скролл при клике
         link.addEventListener('click', (e) => {
             e.preventDefault();
             targetElement.scrollIntoView({
@@ -543,7 +532,6 @@ const SCROLL_SPEED = 25;
         navContainer.appendChild(link);
     });
 
-    // Добавляем панель на страницу (только если есть хотя бы один элемент)
     if (navContainer.children.length > 0) {
         document.body.appendChild(navContainer);
     }
