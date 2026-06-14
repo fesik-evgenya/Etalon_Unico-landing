@@ -2637,9 +2637,11 @@ body {
 
 /* ===== ЛОАДЕР ДЛЯ СЛАЙДЕРОВ ===== */
 .card__slider {
-    position: relative;
+    position: relative;               /* контекст для абсолютного лоадера */
+    min-height: 500px;               /* базовая высота для десктопа и планшетов */
 }
 
+/* Лоадер – накладывается поверх области слайдера */
 .slider-loader {
     position: absolute;
     top: 0;
@@ -2658,12 +2660,14 @@ body {
     transition: opacity 0.3s ease;
 }
 
+/* Логотип в лоадере с мягкой пульсацией */
 .loader-logo {
     width: 70px;
     height: auto;
     animation: gentlePulse 1.5s infinite ease-in-out;
 }
 
+/* Спиннер загрузки */
 .loader-spinner {
     width: 48px;
     height: 48px;
@@ -2673,6 +2677,7 @@ body {
     animation: spin 1s linear infinite;
 }
 
+/* Текст лоадера */
 .loader-text {
     font-family: var(--font-body), system-ui, sans-serif;
     font-weight: 500;
@@ -2682,6 +2687,30 @@ body {
     text-shadow: 0 1px 2px rgba(0,0,0,0.2);
 }
 
+/* Контейнер для изображений с сохранением пропорций */
+.slider-images {
+    position: relative;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 5 / 4;
+    overflow: hidden;
+}
+
+/* Сами изображения (слои для кроссфейда) */
+.card__slider-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: opacity 0.6s ease-in-out;
+    background: #2C2C2C;
+    opacity: 0.4;
+}
+
+/* Анимации */
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
@@ -2693,8 +2722,19 @@ body {
     100% { opacity: 0.7; transform: scale(1); }
 }
 
-/* Адаптив для мобильных */
+/* ===== АДАПТИВНАЯ ВЫСОТА ДЛЯ РАЗНЫХ УСТРОЙСТВ ===== */
+/* Планшеты (ширина до 1024px) – высота слайдера 500px */
+@media (max-width: 1024px) {
+    .card__slider {
+        min-height: 500px;
+    }
+}
+
+/* Мобильные телефоны (ширина до 767px) – высота слайдера 344px */
 @media (max-width: 767px) {
+    .card__slider {
+        min-height: 344px;
+    }
     .loader-logo {
         width: 50px;
     }
@@ -2708,6 +2748,7 @@ body {
     }
 }
 
+/* Очень узкие мобильные (ширина до 431px) – дополнительная коррекция отступов */
 @media (max-width: 431px) {
     .slider-loader {
         gap: 12px;
@@ -2721,5 +2762,11 @@ body {
     }
     .loader-text {
         font-size: 12px;
+    }
+}
+
+@media (min-width: 1025px) {
+    .card__grid {
+        margin-top: 150px;
     }
 }
